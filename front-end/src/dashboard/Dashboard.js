@@ -48,6 +48,13 @@ function Dashboard({ date }) {
       } catch (error) {
         setError(error);
       }
+
+    //   const abortController = new AbortController();
+    // setError(null);
+    // listReservations({ date }, abortController.signal)
+    //   .then(setReservations)
+    //   .catch(setError);
+    // return () => abortController.abort();
     }
     loadReservations();
     return () => abortController.abort();

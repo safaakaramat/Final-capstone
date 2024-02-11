@@ -201,16 +201,16 @@
    const { date, currentDate, mobile_number } = req.query;
    if (date) {
      const data = await service.listByDate(date);
-     res.json({ data });
+     res.json({ data: data });
    } else if (currentDate) {
      const data = await service.listByDate(currentDate);
-     res.json({ data });
+     res.json({ data: data  });
    } else if (mobile_number) {
      const data = await service.listByPhone(mobile_number);
-     res.json({ data });
+     res.json({ data: data  });
    } else {
      const data = await service.list();
-     res.json({ data });
+     res.json({ data: data  });
    }
  }
 
