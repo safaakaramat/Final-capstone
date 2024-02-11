@@ -60,15 +60,17 @@ function hasTableCapacity(req, res, next) {
 }
 
 function validTableCapacity(req, res, next) {
-  const capacity = req.body.data.capacity;
-  if (capacity >= 1) {
+  const { capacity } = req.body.data;
+  if (typeof capacity == 'number' && capacity >= 1) {
     return next();
+  } else {
+    return next({
+      status: 400,
+      message: "Table must have a capacity of at least 1 and it must be a number.",
+    });
   }
-  next({
-    status: 400,
-    message: "Table must seat at least 1 person.",
-  })
 }
+
 
 async function tableExists(req, res, next) {
   const table_id = req.params.table_id;

@@ -221,6 +221,9 @@
 
  async function create(req, res) {
    const reservation = req.body.data;
+   if (!reservation) {
+     return res.status(400).json({ error: "invalid reservation" });
+   }
    const data = await service.create(reservation);
    res.status(201).json({ data });
  }
