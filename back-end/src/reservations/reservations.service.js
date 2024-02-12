@@ -4,8 +4,8 @@ const knex = require('../db/connection');
 function list() {
   return knex('reservations')
     .select('*')
-    .whereNot({ status: "finished"})
-    .andWhereNot({ status: "cancelled"})
+    // .whereNot({ status: "finished"})
+    // .andWhereNot({ status: "cancelled"})
     .orderBy('reservation_time');
 }
 
@@ -14,7 +14,7 @@ function listByDate(reservation_date) {
     .select('*')
     .where({ reservation_date })
     .whereNot({ status: "finished"})
-    .andWhereNot({ status: "cancelled"})
+    // .andWhereNot({ status: "cancelled"})
     .orderBy('reservation_time')
 }
 
