@@ -33,20 +33,38 @@ function ReservationForm({ date }) {
     }
   }, [isEdit, reservation_id]);
 
+
   const handleChange = ({ target }) => {
     setReservation({
       ...reservation,
-      [target.name]: target.name === "people" ? Number(target.value) : target.value,
+      [target.name]: target.value,
     });
+  };
+
+  const validateForm = () => {
+    const errors = [];
+    if (!/^[A-Za-z\s]+$/.test(reservation.first_name)) {
+      errors.push("Enter validate first name.");
+    }
+    if (!/^[A-Za-z\s]+$/.test(reservation.last_name)) {
+      errors.push("Enter validate last name.");
+    }
+    return errors;
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    const formErrors = validateForm();
+    if (formErrors.length > 0) {
+      setError({ message: formErrors.join(" ") });
+      return;
+    }
     const apiCall = isEdit ? updateReservation : createReservation;
     apiCall(reservation)
       .then(() => history.push(`/dashboard?date=${reservation.reservation_date}`))
       .catch(setError);
   };
+
 
   return (
     <>
