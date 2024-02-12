@@ -4,10 +4,11 @@ import Dashboard from "../dashboard/Dashboard";
 import NotFound from "./NotFound";
 import { today } from "../utils/date-time";
 import useQuery from "../utils/useQuery";
-import ReservationCreate from "./reservations/ReservationCreate";
+// import ReservationCreate from "./reservations/ReservationCreate";
+import ReservationForm from "./reservations/ReservationForm";
 import ReservationSeat from "./reservations/ReservationSeat";
 import TableCreate from "./tables/TableCreate";
-import ReservationEdit from "./reservations/ReservationEdit";
+// import ReservationEdit from "./reservations/ReservationEdit";
 import ReservationSearch from "./ReservationSearch";
 
 /**
@@ -47,13 +48,15 @@ function Routes() {
         <ReservationSearch />
       </Route>
       <Route exact path="/reservations/new">
-        <ReservationCreate date={date} />
+        {/* <ReservationCreate date={date} /> */}
+        <ReservationForm date={date} />
       </Route>
       <Route exact path="/reservations/:reservation_id/seat">
         <ReservationSeat />
       </Route>
       <Route exact path="/reservations/:reservation_id/edit">
-        <ReservationEdit date={date} />
+        {/* <ReservationEdit date={date} /> */}
+        <ReservationForm date={date} />
       </Route>
       <Route exact path="/tables/new">
         <TableCreate />
