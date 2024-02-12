@@ -55,7 +55,7 @@ function TableCreate() {
               name="capacity"
               id="capacity"
               required={true}
-              type="text"
+              type="number"
               onChange={handleChange}
               value={table.capacity}
 

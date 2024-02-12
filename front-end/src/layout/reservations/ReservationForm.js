@@ -37,7 +37,7 @@ function ReservationForm({ date }) {
   const handleChange = ({ target }) => {
     setReservation({
       ...reservation,
-      [target.name]: target.value,
+      [target.name]: target.name === "people" ? Number(target.value) : target.value,
     });
   };
 
