@@ -84,18 +84,18 @@ function hasTableCapacity(req, res, next) {
 //   }
 // }
 
-function validTableCapacity(req, res, next) {
-  const { capacity } = req.body.data;
+// function validTableCapacity(req, res, next) {
+//   const { capacity } = req.body.data;
 
-  if ((capacity && capacity.length) || capacity<=0) {
-  return next({
-  status: 400,
-  message: "Table must have a capacity of at least 1 and it must be a number.",
-  });
-  } else {
-  return next();
-  }
-  }
+//   if ((capacity && capacity.length) || capacity<=0) {
+//   return next({
+//   status: 400,
+//   message: "Table must have a capacity of at least 1 and it must be a number.",
+//   });
+//   } else {
+//   return next();
+//   }
+//   }
 
 
 async function tableExists(req, res, next) {
@@ -205,7 +205,7 @@ module.exports = {
     hasTableName,
     validTableName,
     hasTableCapacity,
-    validTableCapacity,
+    // validTableCapacity,
     asyncErrorBoundary(create),
   ],
   read: [asyncErrorBoundary(tableExists), read],
