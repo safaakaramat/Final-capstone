@@ -60,7 +60,7 @@ function hasTableCapacity(req, res, next) {
 function validTableCapacity(req, res, next) {
   const {
     data: { capacity },
-  } = res.locals;
+  } = req.body;
 
   if (capacity < 1) {
     return next({
@@ -73,7 +73,7 @@ function validTableCapacity(req, res, next) {
 }
 
 function tableCapacityIsANumber(req, res, next) {
-  const { data: { capacity } } = res.locals;
+  const { data: { capacity } } = req.body;
   if (typeof capacity !== "number" || isNaN(capacity)) {
     return next({
       status: 400,
