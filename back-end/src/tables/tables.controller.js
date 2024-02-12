@@ -59,9 +59,22 @@ function hasTableCapacity(req, res, next) {
   })
 }
 
+// function validTableCapacity(req, res, next) {
+//   const { capacity } = req.body.data;
+//   if (typeof capacity == 'number' && capacity >= 1) {
+//     return next();
+//   } else {
+//     return next({
+//       status: 400,
+//       message: "Table must have a capacity of at least 1 and it must be a number.",
+//     });
+//   }
+// }
+
 function validTableCapacity(req, res, next) {
   const { capacity } = req.body.data;
-  if (typeof capacity == 'number' && capacity >= 1) {
+
+  if (+capacity != NaN && capacity >= 1) {
     return next();
   } else {
     return next({
