@@ -7,15 +7,25 @@ function TableCreate() {
   const [error, setError] = useState(null);
   const history = useHistory();
   const [table, setTable] = useState({
-    "table_name": "",
-    "capacity": "",
+    table_name: "",
+    capacity: "",
   });
 
+  // const handleChange = ({ target }) => {
+  //   setTable({
+  //     ...table,
+  //     [target.name]: target.value,
+  //   })
+  // }
+
+
+
   const handleChange = ({ target }) => {
-    setTable({
-      ...table,
-      [target.name]: target.value,
-    })
+    if (target.name === "capacity") {
+      setTable({ ...table, [target.name]: Number(target.value) });
+    } else {
+      setTable({ ...table, [target.name]: target.value });
+    }
   }
 
   async function handleSubmit(event) {
@@ -27,7 +37,6 @@ function TableCreate() {
       .catch(setError);
   }
 
-
   return (
     <main>
       <h1> Create A Table </h1>
@@ -35,7 +44,10 @@ function TableCreate() {
       <form onSubmit={handleSubmit} className="form-group">
         <div className="row mb-3">
           <div className="col-4 form-group">
-            <label className="form-label" htmlFor="table_name"> Table Name </label>
+            <label className="form-label" htmlFor="table_name">
+              {" "}
+              Table Name{" "}
+            </label>
             <input
               className="form-control"
               name="table_name"
@@ -44,12 +56,14 @@ function TableCreate() {
               type="text"
               onChange={handleChange}
               value={table.table_name}
-
             />
             <small className="form-text text-muted"> Enter Table Name </small>
           </div>
           <div className="col-4 form-group">
-            <label className="form-label" htmlFor="capacity"> Table Capacity </label>
+            <label className="form-label" htmlFor="capacity">
+              {" "}
+              Table Capacity{" "}
+            </label>
             <input
               className="form-control"
               name="capacity"
@@ -58,9 +72,11 @@ function TableCreate() {
               type="number"
               onChange={handleChange}
               value={table.capacity}
-
             />
-            <small className="form-text text-muted"> Enter Table Capacity </small>
+            <small className="form-text text-muted">
+              {" "}
+              Enter Table Capacity{" "}
+            </small>
           </div>
         </div>
         <button
@@ -70,10 +86,7 @@ function TableCreate() {
         >
           Cancel
         </button>
-        <button
-          type="submit"
-          className="btn btn-primary"
-        >
+        <button type="submit" className="btn btn-primary">
           Submit
         </button>
       </form>
